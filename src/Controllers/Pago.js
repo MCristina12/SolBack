@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import { Boleto } from "../Models/Boleto.js";
 import { Pago } from "../Models/Pago.js";
+import nodemailer from "nodemailer"
 
 dotenv.config();
 
@@ -48,4 +49,26 @@ export class PagoController{
             return res.status(400).json(e.message);
         }
     };
+
+    sendEmail = async(req, res) =>{
+        let testAccount = await nodemailer.createTestAccount();
+        const config = {
+            host: "smtp.ethereal.email",
+            port: 587,
+            secure: false, 
+            auth: {
+                user: testAccount.user,
+                pass: testAccount.pass,
+            },
+        }
+        const mensaje = {
+            from : testAccount.user,
+            to : 'chuarcaya65@gmail.com',
+            subject : "Correo test",
+            text : "Envio prueba"
+        }
+        const transport = nodemailer.createTransport(config);
+        const info = await transport.sendEmail(mensaje);
+        console.log(info)
+    }
 }

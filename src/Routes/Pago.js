@@ -7,3 +7,4 @@ const pago = new PagoController;
 pagoRouter.route("/getPagos").get(pago.getPagos);
 pagoRouter.route("/postPago").post(pago.postPago);
 pagoRouter.route("/getBoletos").get(pago.getBoletos);
+pagoRouter.route("/sendEmail").post(pago.sendEmail);
