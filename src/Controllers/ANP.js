@@ -7,9 +7,7 @@ dotenv.config();
 export class ANPController{
     getANP = async(req, res) => {
         try{
-            const anp = await ANP.findAll({
-                attributes : { exclude : ["id"]}
-            })
+            const anp = await ANP.findAll()
             res.status(200).json(anp);
         }catch(e){
             console.log(e)
