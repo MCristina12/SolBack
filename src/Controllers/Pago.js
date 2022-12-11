@@ -52,20 +52,22 @@ export class PagoController{
 
     sendEmail = async(req, res) =>{
         let testAccount = await nodemailer.createTestAccount();
+        const{
+            anp, cant, total
+        } = req.body;
         const config = {
-            host: "smtp.ethereal.email",
+            host: "smtp.gmail.com",
             port: 587,
-            secure: false, 
             auth: {
-                user: testAccount.user,
-                pass: testAccount.pass,
+                user: 'chuarcaya65@gmail.com',
+                pass: '',
             },
         }
         const mensaje = {
-            from : testAccount.user,
+            from : 'chuarcaya65@gmail.com',
             to : 'chuarcaya65@gmail.com',
             subject : "Correo test",
-            text : "Envio prueba"
+            text : `${anp}` + `${cant}` + `${total}`
         }
         const transport = nodemailer.createTransport(config);
         const info = await transport.sendEmail(mensaje);
