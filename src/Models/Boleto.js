@@ -1,7 +1,7 @@
 import {Model, DataTypes } from 'sequelize';
 import { sequelize } from '../Config/sequelize.js';
 import { ANP } from './ANP.js';
-import { Pago } from './pago.js';
+import { Pago } from './Pago.js';
 
 export class Boleto extends Model {}
 
