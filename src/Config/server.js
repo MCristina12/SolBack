@@ -4,6 +4,7 @@ import cors from "cors";
 import { sequelize } from "./sequelize.js";
 import dotenv from "dotenv"
 import { anpRouter } from "../Routes/ANP.js";
+import { pagoRouter } from "../Routes/Pago.js";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ export default class Server{
     routes(){
         this.app.get("/")
         this.app.use(anpRouter)
+        this.app.use(pagoRouter)
     }
 
     start() {
